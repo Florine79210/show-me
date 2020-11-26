@@ -6,3 +6,44 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+
+// *************** SCSS PAGES *************************************************************************************
+
+// ----------------- PAGE INDEX ------------------------------------------------------------------
+
+.bienvenue {
+    color: $bleuet;
+    font-weight: bold;
+}
+.btnsConnexionInscription {
+    color: $blanc;
+    background-color: $bleuet;
+}
+
+
+// ----------------- PAGE LOGIN ------------------------------------------------------------------
+
+
+
+// ----------------- PAGE REGISTER ------------------------------------------------------------------
+
+
+// ----------------- PAGE HOME ------------------------------------------------------------------
+
+// ----------------- NAVBAR ------------------------------------------------------------------
+
+.navbar {
+    background-color: $bleuet;
+    
+}
+
+.navbar a {
+    text-decoration: none;
+    color: $blanc;
+} 
+
+.navbar a .nomDuSite {
+    font-weight: bold;
+    font-size: 40px;
+}

@@ -11,13 +11,30 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    public function show_its(){
+
+        return $this->hasMany('App\Models\Show_it');
+    } 
+
+    public function comments(){
+
+        return $this->hasMany('App\Models\Comment');
+        } 
+
+    public function role(){
+
+        return $this->belongsTo('App\Models\Role', 'role_id');
+        } 
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'pseudo',
         'email',
         'password',
     ];
@@ -40,4 +57,5 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
 }
