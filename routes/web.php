@@ -21,3 +21,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('/users', 'UserController');
+
+Route::resource('/show-its', 'ShowItController');
+
+Route::resource('/comments', 'CommentController');
+
+Route::get('user/profile', [App\Http\Controllers\UserController::class, 'profile'])->name('user.profile');
+
+Route::get('user/infos', [App\Http\Controllers\UserController::class, 'show'])->name('user.infos');
+
+Route::put('user/update', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');

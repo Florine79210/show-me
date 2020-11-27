@@ -10,32 +10,26 @@
 
 // *************** SCSS PAGES *************************************************************************************
 
+@import 'home.scss';
+
+@import 'infos.scss';
+
+
 // ----------------- PAGE INDEX ------------------------------------------------------------------
 
-.bienvenue {
-    color: $bleuet;
-    font-weight: bold;
-}
-.btnsConnexionInscription {
-    color: $blanc;
-    background-color: $bleuet;
-}
-
-
-// ----------------- PAGE LOGIN ------------------------------------------------------------------
-
-
-
-// ----------------- PAGE REGISTER ------------------------------------------------------------------
-
-
-// ----------------- PAGE HOME ------------------------------------------------------------------
+// .bienvenue {
+//     color: $bleuet;
+//     font-weight: bold;
+// }
+// .btnsConnexionInscription {
+//     color: $blanc;
+//     background-color: $bleuet;
+// }
 
 // ----------------- NAVBAR ------------------------------------------------------------------
 
 .navbar {
     background-color: $bleuet;
-    
 }
 
 .navbar a {
@@ -47,3 +41,7 @@
     font-weight: bold;
     font-size: 40px;
 }
+
+// .navbar a .dropdown-item {
+//     color: $bleuet;
+// }

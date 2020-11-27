@@ -16,7 +16,7 @@
 
             <div class="container">
                 <div class="row mt-5 mb-3 pt-5 justify-content-center">
-                    <img class="w-25" src="images/logo_show-me.png" alt="main avec doigt pointé">
+                    <img class="w-25" src="images/logoBleuet_show-me.png" alt="main avec doigt pointé">
                 </div>
 
                 <div class="row mt-5 mb-5 justify-content-center">

@@ -10903,14 +10903,59 @@ a.text-dark:focus {
   }
 }
 
-.bienvenue {
+h1 {
   color: #422f99;
+  font-size: 40px;
   font-weight: bold;
 }
 
-.btnsConnexionInscription {
-  color: #ffffff;
+p {
+  font-size: 15px;
+}
+
+.nomInfo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+h2 {
+  color: #422f99;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.precisions {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.btnsModif {
+  font-size: 15px;
+  font-weight: bold;
+  width: 130px;
   background-color: #422f99;
+  color: #ffffff;
+  border: outset 2px;
+  border-color: #ffffff;
+  border-radius: 20px;
+}
+
+.btnsModif:hover {
+  transform: scale(1.2);
+  transition: 1.5s;
+  background-color: #ffffff;
+  color: #422f99;
+  border-color: #422f99;
+}
+
+.close {
+  color: #422f99;
+}
+
+.close:hover {
+  transform: scale(1.2);
+  transition: 1.5s;
+  color: #e3342f;
 }
 
 .navbar {

@@ -8,10 +8,9 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <link rel="stylesheet" href="{{asset('css/app.css') }}">
+        <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
         <!-- Scripts -->
-        <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
         <script src="/js/app.js"></script>
 
     </head>
@@ -22,7 +21,7 @@
 
             <div class="container pt-5">
                 <div class="row mt-5 mb-3 pt-5 justify-content-center">
-                    <img class="w-25" src="images/logo_show-me.png" alt="main avec doigt pointé">
+                    <img class="w-25" src="images/logoBleuet_show-me.png" alt="main avec doigt pointé">
                 </div>
 
                 <div class="row mt-5 mb-5 justify-content-center">
@@ -33,7 +32,7 @@
 
         <main>
                 <div class="row mt-5 mb-5 pt-5 justify-content-center">
-                    <p>Pour continuer connécter vous ou inscriver vous.
+                    <p>Pour continuer connéctez vous ou inscrivez vous.
                 </div>
 
                 <div class="row mt-5 justify-content-center">

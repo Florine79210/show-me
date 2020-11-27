@@ -14,11 +14,9 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
-    <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
     <script src="/js/app.js"></script>
 
 </head>
@@ -29,7 +27,7 @@
                 
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <div class="row">
-                        <img class="w-25" src="images/logo_show-me.png" alt="main avec doigt pointé">
+                        <img class="w-25" src="images/logoBlanc_show-me.png" alt="main avec doigt pointé">
                         <p class="ml-5 nomDuSite">Show Me<p>
                     </div>
                 </a>
@@ -63,14 +61,19 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    {{ __('Bonjour')}} {{ Auth::user()->pseudo }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+
+                                    <a class="dropdown-item text-dark" href="{{ route('user.profile') }}">{{ __('Mon profil') }}</a>
+
+                                    <a class="dropdown-item text-dark" href="{{ route('user.infos') }}">{{ __('Mes infos') }}</a>
+
+                                    <a class="dropdown-item text-dark" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Déconnexion') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -78,7 +81,9 @@
                                     </form>
                                 </div>
                             </li>
+
                         @endguest
+
                     </ul>
                 </div>
             </div>
