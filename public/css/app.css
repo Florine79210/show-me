@@ -10903,6 +10903,41 @@ a.text-dark:focus {
   }
 }
 
+.postShowIt {
+  border: outset 2px;
+  border-color: #422f99;
+  border-radius: 20px;
+}
+
+.postShowIt .card-header {
+  background-color: #422f99;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+}
+
+.postShowIt h1 {
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.showShowIts {
+  border: outset 2px;
+  border-color: #422f99;
+  border-radius: 20px;
+}
+
+.showShowIts .card-header {
+  color: #ffffff;
+  background-color: #422f99;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+}
+
+.showShowIts p {
+  color: #422f99;
+}
+
 h1 {
   color: #422f99;
   font-size: 40px;

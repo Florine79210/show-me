@@ -1,0 +1,34 @@
+.postShowIt {
+    border: outset 2px;
+    border-color: $bleuet;
+    border-radius: 20px;
+}
+
+.postShowIt .card-header {
+    background-color: $bleuet;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.postShowIt h1 {
+    color: $blanc;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.showShowIts {
+    border: outset 2px;
+    border-color: $bleuet;
+    border-radius: 20px;
+}
+
+.showShowIts .card-header {
+    color: $blanc;
+    background-color: $bleuet;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.showShowIts p {
+    color: $bleuet;
+}

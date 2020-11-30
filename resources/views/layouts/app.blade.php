@@ -68,7 +68,7 @@
 
                                     <a class="dropdown-item text-dark" href="{{ route('user.profile') }}">{{ __('Mon profil') }}</a>
 
-                                    <a class="dropdown-item text-dark" href="{{ route('user.infos') }}">{{ __('Mes infos') }}</a>
+                                    <a class="dropdown-item text-dark" href="{{ route('user.update') }}">{{ __('Mes infos') }}</a>
 
                                     <a class="dropdown-item text-dark" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

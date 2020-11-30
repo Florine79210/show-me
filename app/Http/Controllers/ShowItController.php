@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ShowIt;
 
 class ShowItController extends Controller
 {
@@ -46,6 +47,42 @@ class ShowItController extends Controller
     public function show($id)
     {
         //
+    }
+
+    // *********** POSTER UN SHOW IT ********************************
+    public function postShowIt(Request $request)
+    {
+        $request->validate([
+            'content' => 'required|min:2',
+            'image' => 'max:11',
+            'tags' => 'max:150'
+        ]);
+            
+        $showIt = new showIt;
+        $showIt->user_id = auth()->user()->id;
+        $showIt->content = $request->input('content');
+        $showIt->image = $request->input('image');
+        $showIt->tags = $request->input('tags');
+        $showIt->save();
+
+        return redirect()->route('home');
+    }
+
+// ***************** MODIFIER UN SHOW IT ******************************
+    public function updateShowIt(Request $request, ShowIt $showIt)
+    {
+        $request->validate([
+            'content' => 'required|min:2',
+            'image' => 'max:11',
+            'tags' => 'max:150'
+        ]);
+        
+        $showIt->content = $request->input('content');
+        $showIt->image = $request->input('image');
+        $showIt->tags = $request->input('tags');
+        $showIt->save();
+
+        return redirect()->route('home');
     }
 
     /**

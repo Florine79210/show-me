@@ -46,12 +46,57 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+
+    //  **************** VOIR LA PAGE INFOS DE L'UTILLISATEUR ****************
+    public function showUpdateInfos()
     {
-        $user = auth()->user();
+        $userId = auth()->user()->id;
+        $user = User::findOrFail($userId);
         return view('user.infos', ['user' => $user]);
     }
 
+    //  *********** MODIFIER LES INFOS DE L'UTILLISATEUR ************
+    public function update(Request $request)
+    {
+        $request->validate([
+            'first_name' => 'required|min:5',
+            'last_name' => 'required|min:5',
+            'pseudo' => 'required|min:6',
+            'email' => 'required|min:8',
+            'password' => 'present',
+            'password_confirmation' => 'present'
+        ]);
+        if ($request->input('password') !== null && $request->input('password_confirmation') !== null) {
+
+            if ($request->input('password') === $request->input('password_confirmation')) {
+
+                $userId = auth()->user()->id;
+                $user = User::findOrFail($userId);
+                $password = $user->password;
+
+                if (Hash::check($request->input('password'), $password)) {
+
+                    $user->first_name = $request->input('first_name');
+                    $user->last_name = $request->input('last_name');
+                    $user->pseudo = $request->input('pseudo');
+                    $user->email = $request->input('email');
+                    $user->save();
+
+                    return redirect()->route('user.update');
+
+                } else {
+                    return redirect()->route('user.update')->withErrors(['password_error', 'Mot de passe INCORRECT !']);
+                }
+            } else {
+                return redirect()->route('user.update')->withErrors(['password_error', 'Les champs de mot de passe et de comfirmation du mot de passe sont DIFFERENTS !']);
+            }
+        } else {
+            return redirect()->route('user.update')->withErrors(['password_error', 'ATTENTION le champ de mot de passe ou de confirmation du mot de passe est VIDE !']);
+        }
+    }
+
+
+    // **************** VOIR LA PAGE PROFIL DE L'UTILLISATEUR ****************
     public function profile()
     {
         $user = auth()->user();
@@ -76,46 +121,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
-    {
-        $request->validate([
-            'first_name' => 'required|min:5',
-            'last_name' => 'required|min:5',
-            'pseudo' => 'required|min:8',
-            'email' => 'required|min:8',
-            'password' => 'present',
-            'password_confirmation' => 'present'
-        ]);
 
-        if ($request->input('password') !== null && $request->input('password_confirmation') !== null) {
 
-            if ($request->input('password') === $request->input('password_confirmation')) {
 
-                $id = auth()->id();
-                $user = User::find($id);
-                $password = $user->password;
-
-                if (Hash::check($request->input('password'), $password)) {
-
-                    $user->first_name = $request->input('first_name');
-                    $user->last_name = $request->input('last_name');
-                    $user->pseudo = $request->input('pseudo');
-                    $user->email = $request->input('email');
-                    $user->save();
-
-                    return redirect()->route('user.infos');
-
-                } else {
-                    return redirect()->route('user.infos')->withErrors(['password_error', 'Mot de passe INCORRECT !']);
-                }
-            } else {
-                return redirect()->route('user.infos')->withErrors(['password_error', 'mot de passe et comfirmation différents !']);
-            }
-        } else {
-            return redirect()->route('user.infos')->withErrors(['password_error', 'ATTENTION champ mot de passe ou confirmation vide !']);
-        }
-    }
-
+    // ************** MODIFIER LE MOT DE PASSE DE L'UTILISATEUR **************
     public function updatePassword(Request $request)
     {
         $request->validate([
@@ -125,6 +134,7 @@ class UserController extends Controller
             'password_confirmation2' => 'required|min:8'
         ]);
     }
+
 
     /**
      * Remove the specified resource from storage.
