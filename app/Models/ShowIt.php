@@ -15,9 +15,9 @@ class ShowIt extends Model
         return $this->belongsTo('App\Models\User', 'user_id');
     } 
 
-    public function comment(){
+    public function comments(){
 
-        return $this->belongsTo('App\Models\Comment', 'user_id');
+        return $this->hasMany('App\Models\Comment');
         } 
 }
 

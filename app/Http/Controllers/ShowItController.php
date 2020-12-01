@@ -72,17 +72,31 @@ class ShowItController extends Controller
     public function updateShowIt(Request $request, ShowIt $showIt)
     {
         $request->validate([
-            'content' => 'required|min:2',
+            'content' => 'required|max:150',
             'image' => 'max:11',
             'tags' => 'max:150'
         ]);
-        
+
         $showIt->content = $request->input('content');
         $showIt->image = $request->input('image');
         $showIt->tags = $request->input('tags');
         $showIt->save();
 
         return redirect()->route('home');
+    }
+
+    // ***************** SUPPRUMER UN SHOW IT ******************************
+    public function deleteShowIt(ShowIt $showIt)
+    {
+        if ($showIt->user_id === auth()->user()->id)
+        {
+            $showIt->delete();
+
+            return redirect()->route('home')->with(['message', 'Le Show It a bien été supprimé !']);
+
+        }else {
+            return redirect()->route('home')->withErrors(['ERREUR d\'autorisation', 'Vous n\'avez pas l\'autorisation de faire ça !']);
+        }
     }
 
     /**

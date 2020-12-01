@@ -83,18 +83,46 @@ class UserController extends Controller
                     $user->save();
 
                     return redirect()->route('user.update');
-
                 } else {
-                    return redirect()->route('user.update')->withErrors(['password_error', 'Mot de passe INCORRECT !']);
+                    return redirect()->route('user.update')->withErrors(['ERREUR de mot de passe', 'Mot de passe INCORRECT !']);
                 }
             } else {
-                return redirect()->route('user.update')->withErrors(['password_error', 'Les champs de mot de passe et de comfirmation du mot de passe sont DIFFERENTS !']);
+                return redirect()->route('user.update')->withErrors(['ERREUR de mot de passe', 'Les champs de mot de passe et de comfirmation du mot de passe sont DIFFERENTS !']);
             }
         } else {
-            return redirect()->route('user.update')->withErrors(['password_error', 'ATTENTION le champ de mot de passe ou de confirmation du mot de passe est VIDE !']);
+            return redirect()->route('user.update')->withErrors(['ERREUR de mot de passe', 'ATTENTION le champ de mot de passe ou de confirmation du mot de passe est VIDE !']);
         }
     }
 
+
+    //  *********** MODIFIER LE Mot DE PASSE L'UTILLISATEUR ************
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'password' => 'required|confirmed',
+            'password2' => 'required|min:8|confirmed'
+        ]);
+        
+        $userId = auth()->user()->id;
+        $user = User::findOrFail($userId);
+        $password = $user->password;
+
+        if (Hash::check($request->input('password'), $password)){
+
+            if ($request->input('password') !== $request->input('password2')) {
+
+                $user->password = Hash::make($request->input('password2'));
+                $user->save();
+
+                return redirect()->route('user.update')->with('message', 'Le mot de passe a bien été modifié');
+
+            } else {
+                return redirect()->route('user.update')->withErrors(['ERREUR de mot de passe', 'L\'ancien mot de passe et le nouveau mot de passe sont IDDENTIQUES !']);
+            }
+        } else {
+            return redirect()->route('user.update')->withErrors(['ERREUR de mot de passe', 'L\'ancien mot de passe est INCORRECT !']);
+        }
+    }
 
     // **************** VOIR LA PAGE PROFIL DE L'UTILLISATEUR ****************
     public function profile()
@@ -121,19 +149,6 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-
-
-    // ************** MODIFIER LE MOT DE PASSE DE L'UTILISATEUR **************
-    public function updatePassword(Request $request)
-    {
-        $request->validate([
-            'password' => 'present',
-            'password_confirmation' => 'present',
-            'password2' => 'required|min:8',
-            'password_confirmation2' => 'required|min:8'
-        ]);
-    }
 
 
     /**

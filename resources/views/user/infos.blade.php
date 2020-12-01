@@ -155,7 +155,7 @@
 </div>
 
 <!-- ------------------ MODAL MODIFIER LE MOT DE PASSE ----------------------------------------             -->
-<!-- <div class="container">
+<div class="container">
     <div class="row justify-content-center">
 
         <button type="button" class="btn btnsModif" data-toggle="modal" data-target="#modalModifMotDePasse">
@@ -174,8 +174,9 @@
                         <h2 class="modal-title text-center">Modifier mon mot de passe</h2>
                     </div>
 
-                    <form method="POST" action="">
+                    <form method="POST" action="{{ route('user.updatePassword') }}">
                         @csrf
+                        @method('PUT')
 
                         <div class="modal-body text-center">
 
@@ -227,7 +228,7 @@
                                 <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmer M.D.P') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control text-center" name="password_confirmation2" required autocomplete="new-password">
+                                    <input id="password-confirm" type="password" class="form-control text-center" name="password2_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
 
@@ -246,6 +247,6 @@
         </div>
 
     </div>
-</div> -->
+</div>
 
 @endsection

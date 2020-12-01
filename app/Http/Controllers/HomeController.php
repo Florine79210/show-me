@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ShowIt;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -24,7 +25,7 @@ class HomeController extends Controller
      */
     public function home()
     {
-        $showIts = ShowIt::all();
+        $showIts = ShowIt::with('comments')->latest()->get();
         return view('home', ['showIts'=>$showIts]);
     }
 }

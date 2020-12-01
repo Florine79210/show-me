@@ -17,11 +17,11 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
             $table->integer('show_it_id');
             $table->text('content');
-            $table->text('image');
+            $table->text('image')->nullable();
             $table->integer('user_id');
-            $table->string('tags');
+            $table->string('tags')->nullable();
             $table->timestamps();
-            $table->date('deleted_at');
+            $table->date('deleted_at')->nullable();
 
             $table->foreign('show_it_id')->references('id')->on('show_its');
             $table->foreign('user_id')->references('id')->on('users');

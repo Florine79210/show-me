@@ -10938,6 +10938,16 @@ a.text-dark:focus {
   color: #422f99;
 }
 
+.showComments {
+  border-color: #422f99;
+}
+
+.showComments .card-header {
+  border-color: #422f99;
+  color: #422f99;
+  background-color: #ffffff;
+}
+
 h1 {
   color: #422f99;
   font-size: 40px;
