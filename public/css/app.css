@@ -10921,6 +10921,73 @@ a.text-dark:focus {
   font-weight: bold;
 }
 
+.btnsShowIt {
+  font-size: 15px;
+  font-weight: bold;
+  border: outset 2px;
+}
+
+.btnsShowIt:hover {
+  transform: scale(1.2);
+  transition: 1.5s;
+}
+
+.btnPostShowIt {
+  width: 130px;
+  background-color: #422f99;
+  color: #ffffff;
+  border-color: #ffffff;
+  border-radius: 15px;
+}
+
+.btnPostShowIt:hover {
+  background-color: #ffffff;
+  color: #422f99;
+  border-color: #422f99;
+}
+
+.btnsCommentShowIt {
+  width: 130px;
+  background-color: #422f99;
+  color: #ffffff;
+  border-color: #ffffff;
+  border-radius: 15px;
+}
+
+.btnsCommentShowIt:hover {
+  background-color: #ffffff;
+  color: #422f99;
+  border-color: #422f99;
+}
+
+.btnsModifShowIt {
+  width: 130px;
+  background-color: #d49d03;
+  color: #ffffff;
+  border-color: #ffffff;
+  border-radius: 20px;
+}
+
+.btnsModifShowIt:hover {
+  background-color: #ffffff;
+  color: #d49d03;
+  border-color: #d49d03;
+}
+
+.btnsSupprShowIt {
+  width: 130px;
+  background-color: #e3342f;
+  color: #ffffff;
+  border-color: #ffffff;
+  border-radius: 15px;
+}
+
+.btnsSupprShowIt:hover {
+  background-color: #ffffff;
+  color: #e3342f;
+  border-color: #e3342f;
+}
+
 .showShowIts {
   border: outset 2px;
   border-color: #422f99;
@@ -10946,6 +11013,10 @@ a.text-dark:focus {
   border-color: #422f99;
   color: #422f99;
   background-color: #ffffff;
+}
+
+.footerShowIt {
+  background-color: #422f99;
 }
 
 h1 {

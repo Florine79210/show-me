@@ -16,6 +16,73 @@
     font-weight: bold;
 }
 
+.btnsShowIt {
+    font-size: 15px;
+    font-weight: bold;
+    border: outset 2px;
+}
+
+.btnsShowIt:hover {
+    transform: scale(1.2);
+    transition: 1.5s;
+}
+
+.btnPostShowIt {
+    width: 130px;
+    background-color: $bleuet;
+    color: $blanc;
+    border-color: $blanc;
+    border-radius: 15px;
+}
+
+.btnPostShowIt:hover {
+    background-color: $blanc;
+    color: $bleuet;
+    border-color: $bleuet;
+}
+
+.btnsCommentShowIt {
+    width: 130px;
+    background-color: $bleuet;
+    color: $blanc;
+    border-color: $blanc;
+    border-radius: 15px;
+}
+
+.btnsCommentShowIt:hover {
+    background-color: $blanc;
+    color: $bleuet;
+    border-color: $bleuet;
+}
+
+.btnsModifShowIt {
+    width: 130px;
+    background-color: $jaurange;
+    color: $blanc;
+    border-color: $blanc;
+    border-radius: 20px;
+}
+
+.btnsModifShowIt:hover {
+    background-color: $blanc;
+    color: $jaurange;
+    border-color: $jaurange;
+}
+
+.btnsSupprShowIt {
+    width: 130px;
+    background-color: $red;
+    color: $blanc;
+    border-color: $blanc;
+    border-radius: 15px;
+}
+
+.btnsSupprShowIt:hover {
+    background-color: $blanc;
+    color: $red;
+    border-color: $red;
+}
+
 .showShowIts {
     border: outset 2px;
     border-color: $bleuet;
@@ -41,4 +108,10 @@
     border-color: $bleuet;
     color: $bleuet;
     background-color: $blanc;
+}
+
+.footerShowIt {
+    background-color: $bleuet;
+    // border-bottom-right-radius: 20px;
+    // border-bottom-left-radius: 20px;
 }

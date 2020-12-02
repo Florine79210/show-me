@@ -27,16 +27,7 @@ class ShowItController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+
 
     /**
      * Display the specified resource.
@@ -50,14 +41,14 @@ class ShowItController extends Controller
     }
 
     // *********** POSTER UN SHOW IT ********************************
-    public function postShowIt(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'content' => 'required|min:2',
             'image' => 'max:11',
             'tags' => 'max:150'
         ]);
-            
+
         $showIt = new showIt;
         $showIt->user_id = auth()->user()->id;
         $showIt->content = $request->input('content');
@@ -68,68 +59,39 @@ class ShowItController extends Controller
         return redirect()->route('home');
     }
 
-// ***************** MODIFIER UN SHOW IT ******************************
-    public function updateShowIt(Request $request, ShowIt $showIt)
+    // ***************** MODIFIER UN SHOW IT ******************************
+    public function update(Request $request, ShowIt $showIt)
     {
-        $request->validate([
-            'content' => 'required|max:150',
-            'image' => 'max:11',
-            'tags' => 'max:150'
-        ]);
+        if ($showIt->user_id === auth()->user()->id) {
+            $request->validate([
+                'content' => 'required|max:150',
+                'image' => 'max:11',
+                'tags' => 'max:150'
+            ]);
 
-        $showIt->content = $request->input('content');
-        $showIt->image = $request->input('image');
-        $showIt->tags = $request->input('tags');
-        $showIt->save();
+            $showIt->content = $request->input('content');
+            $showIt->image = $request->input('image');
+            $showIt->tags = $request->input('tags');
+            $showIt->save();
 
-        return redirect()->route('home');
-    }
+            return redirect()->route('home')->with(['message', 'Le Show It a bien été modifié !']);
 
-    // ***************** SUPPRUMER UN SHOW IT ******************************
-    public function deleteShowIt(ShowIt $showIt)
-    {
-        if ($showIt->user_id === auth()->user()->id)
-        {
-            $showIt->delete();
-
-            return redirect()->route('home')->with(['message', 'Le Show It a bien été supprimé !']);
-
-        }else {
+        }else{
             return redirect()->route('home')->withErrors(['ERREUR d\'autorisation', 'Vous n\'avez pas l\'autorisation de faire ça !']);
         }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    // ***************** SUPPRiMER UN SHOW IT ******************************
+    public function destroy(ShowIt $showIt)
     {
-        //
-    }
+        if ($showIt->user_id === auth()->user()->id) {
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+            $showIt->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+            return redirect()->route('home')->with(['message', 'Le Show It a bien été supprimé !']);
+
+        } else {
+            return redirect()->route('home')->withErrors(['ERREUR d\'autorisation', 'Vous n\'avez pas l\'autorisation de faire ça !']);
+        }
     }
 }

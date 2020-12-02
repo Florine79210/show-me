@@ -28,16 +28,6 @@ class CommentController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -50,72 +40,63 @@ class CommentController extends Controller
         //
     }
 
-        // *********** POSTER UN COMMENTAIRE ********************************
-        public function postComment(Request $request)
-        {
+    // *********** POSTER UN COMMENTAIRE ********************************
+    public function store(Request $request)
+    {
+        $request->validate([
+            'content' => 'required|min:2',
+            'image' => 'max:11',
+            'tags' => 'max:150'
+        ]);
+
+        $comment = new Comment;
+        $comment->user_id = auth()->user()->id;
+        $comment->show_it_id = $request->input('show_it_id');
+        $comment->content = $request->input('content');
+        $comment->image = $request->input('image');
+        $comment->tags = $request->input('tags');
+        $comment->save();
+
+        return redirect()->route('home');
+    }
+
+
+    // ***************** MODIFIER UN COMMENTAIRE ******************************
+    public function update(Request $request, Comment $comment)
+    {
+        if ($comment->user_id === auth()->user()->id) {
+
             $request->validate([
-                'content' => 'required|min:2',
+                'content' => 'required|max:150',
                 'image' => 'max:11',
                 'tags' => 'max:150'
             ]);
-                
-            $comment = new Comment;
-            $comment->user_id = auth()->user()->id;
-            $comment->show_it_id = $request->input('show_it_id');
+
             $comment->content = $request->input('content');
             $comment->image = $request->input('image');
             $comment->tags = $request->input('tags');
             $comment->save();
-    
-            return redirect()->route('home');
-        }
 
+            return redirect()->route('home')->with(['message', 'Le Commentaire a bien été modifié !']);
 
-        public function deleteComment(ShowIt $showIt, Comment $comment)
-    {
-        if ($showIt->user_id === auth()->user()->id || $comment->user_id === auth()->user()->id)
-        {
-            $comment->delete();
-
-            return redirect()->route('home')->with(['message', 'Le Commentaire a bien été supprimé !']);
-
-        }else {
+        } else {
             return redirect()->route('home')->withErrors(['ERREUR d\'autorisation', 'Vous n\'avez pas l\'autorisation de faire ça !']);
         }
     }
 
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    // *********** SUPPRIMER UN COMMENTAIRE ********************************
+    public function destroy(Comment $comment)
     {
-        //
-    }
+        $showIt = ShowIt::findOrFail($comment->show_it_id);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+        if ($showIt->user_id === auth()->user()->id || $comment->user_id === auth()->user()->id) {
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+            $comment->delete();
+
+            return redirect()->route('home')->with(['message', 'Le Commentaire a bien été supprimé !']);
+        } else {
+            return redirect()->route('home')->withErrors(['ERREUR d\'autorisation', 'Vous n\'avez pas l\'autorisation de faire ça !']);
+        }
     }
 }
