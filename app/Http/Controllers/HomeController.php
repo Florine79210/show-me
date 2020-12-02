@@ -28,4 +28,5 @@ class HomeController extends Controller
         $showIts = ShowIt::with('comments')->latest()->get();
         return view('home', ['showIts'=>$showIts]);
     }
+
 }

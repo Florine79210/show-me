@@ -1,3 +1,5 @@
+// *************************** POSTER UN SHOW IT *******************************************
+
 .postShowIt {
     border: outset 2px;
     border-color: $bleuet;
@@ -15,6 +17,8 @@
     font-size: 30px;
     font-weight: bold;
 }
+
+// *************************** BOUTONS *******************************************
 
 .btnsShowIt {
     font-size: 15px;
@@ -83,6 +87,9 @@
     border-color: $red;
 }
 
+
+// *************************** AFFICHAGE DES SHOW IT *******************************************
+
 .showShowIts {
     border: outset 2px;
     border-color: $bleuet;
@@ -110,8 +117,8 @@
     background-color: $blanc;
 }
 
-.footerShowIt {
+.footerShowIts {
     background-color: $bleuet;
-    // border-bottom-right-radius: 20px;
-    // border-bottom-left-radius: 20px;
+    // border-bottom-right-radius: 30px;
+    // border-bottom-left-radius: 30px;
 }

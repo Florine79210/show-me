@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ShowIt;
+use App\Models\Comment;
+use App\Models\User;
 
 class ShowItController extends Controller
 {
@@ -28,17 +30,23 @@ class ShowItController extends Controller
     }
 
 
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+// *********** ZOOM SUR UN SHOW IT ********************************
+    public function show(ShowIt $showIt)
     {
-        //
+        $user = User::where('id', $showIt->user_id)->get();
+        $comments = Comment::where('user_id', $showIt->user_id)->get();
+
+        return view('show-its.show', [
+            'show_it' => $showIt, 
+            'comments' => $comments,
+            'user' => $user
+        ]);
+
+        // $showIt = ShowIt::findOrFail($showIt);
+
+        // return redirect()->route('zoomShowIt');
     }
+
 
     // *********** POSTER UN SHOW IT ********************************
     public function store(Request $request)
@@ -81,7 +89,7 @@ class ShowItController extends Controller
         }
     }
 
-    // ***************** SUPPRiMER UN SHOW IT ******************************
+    // ***************** SUPPRIMER UN SHOW IT ******************************
     public function destroy(ShowIt $showIt)
     {
         if ($showIt->user_id === auth()->user()->id) {

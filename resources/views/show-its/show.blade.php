@@ -2,47 +2,7 @@
 
 @section('content')
 
-<!-- *********** POSTER UN SHOW IT *********************************************************************************************************** -->
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card mb-5 postShowIt">
-                <div class="card-header text-center">
-                    <h1>Exprime toi</h1>
-                </div>
-
-                <div class="card-body text-center">
-                    <form method="POST" action="{{ route('show-its.store') }}">
-                        @csrf
-                        <div class="row justify-content-center">
-                            <div class="row w-100">
-                                <input name="content" type="text" class="form-control @error('content') is-invalid @enderror text-center" placeholder="Tape ton Show It" required>
-                            </div>
-
-                            <div class="row mt-2 w-100 justify-content-between">
-                                <div class="col-md-6">
-                                    <input name="image" type="text" class="form-control @error('image') is-invalid @enderror text-center" placeholder="Ajoute une image">
-                                </div>
-
-                                <div class="col-md-6">
-                                    <input name="tags" type="text" class="form-control @error('tags') is-invalid @enderror text-center" placeholder="Ajoute un ou des  tag(s)">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mt-3 justify-content-center">
-                            <button type="submit" class="btn btnsShowIt btnPostShowIt">Show It</button>
-                        </div>
-
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- *********** AFFICHER LES SHOW IT *********************************************************************************************************** -->
-@foreach ($showIts as $showIt)
+    <!-- *********** AFFICHER LE SHOW IT *********************************************************************************************************** -->
 
 <div class="container mb-3">
     <div class="row justify-content-center">
@@ -64,12 +24,7 @@
                         <p>{{ $showIt->tags }}</p>
                     </div>
 
-                    <div class="row mt-2 mb-3 justify-content-center">
-                        <a href="{{ route('show-its.show', $showIt) }}">Zoom sur ce Show It</a>
-                    </div>
-
                     <div class="row justify-content-center">
-
 
                         <!-- *********** MODAL COMMENTER LE SHOW IT *********************************************************************************************************** -->
                         <div class="col-md-4">
@@ -127,7 +82,6 @@
                                 </div>
                             </div>
                         </div>
-
 
                         <!-- *********** MODAL MODIFIER MON SHOW IT *********************************************************************************************************** -->
                         @if ($showIt->user_id === auth()->user()->id)
@@ -317,6 +271,6 @@
         </div>
     </div>
 </div>
-@endforeach
 
 @endsection
+
