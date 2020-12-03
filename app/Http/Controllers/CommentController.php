@@ -64,7 +64,7 @@ class CommentController extends Controller
     // ***************** MODIFIER UN COMMENTAIRE ******************************
     public function update(Request $request, Comment $comment)
     {
-        if ($comment->user_id === auth()->user()->id) {
+        if ($this->authorize('update', $comment)) {
 
             $request->validate([
                 'content' => 'required|max:150',
@@ -90,7 +90,7 @@ class CommentController extends Controller
     {
         $showIt = ShowIt::findOrFail($comment->show_it_id);
 
-        if ($showIt->user_id === auth()->user()->id || $comment->user_id === auth()->user()->id) {
+        if ($this->authorize('delete', $comment)) {
 
             $comment->delete();
 

@@ -41,4 +41,6 @@ Route::resource('/show-its', App\Http\Controllers\ShowItController::class);
 //----------- Commentaires -------------------------------------------------------------------------------
 Route::resource('/comments', App\Http\Controllers\CommentController::class);
 
+//----------- Recherche -------------------------------------------------------------------------------
+Route::post('/show-its/search', [App\Http\Controllers\ShowItController::class, 'search'])->name('show-its.search');
 

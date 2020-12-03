@@ -29,7 +29,7 @@
 
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     <div class="row">
-                        <img class="w-25" src="images/logoBlanc_show-me.png" alt="main avec doigt pointé">
+                        <img class="w-25" src="{{ asset("images/logoBlanc_show-me.png") }}" alt="main avec doigt pointé">
                         <p class="ml-5 nomDuSite">Show Me<p>
                     </div>
                 </a>
@@ -40,50 +40,50 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                        @if (Route::has('login'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @endif
 
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                        @endif
-                        @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ __('Bonjour')}} {{ Auth::user()->pseudo }}
-                            </a>
+                        @auth
+                        <div class="col-md-12">
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <div class="row justify-content-end">
+                                <li class="nav-item dropdown">
 
-                                <a class="dropdown-item text-dark" href="{{ route('user.profile') }}">{{ __('Mon profil') }}</a>
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ __('Bonjour')}} {{ Auth::user()->pseudo }}
+                                    </a>
 
-                                <a class="dropdown-item text-dark" href="{{ route('user.update') }}">{{ __('Mes infos') }}</a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                                <a class="dropdown-item text-dark" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                        <a class="dropdown-item text-dark" href="{{ route('user.profile') }}">{{ __('Mon profil') }}</a>
+
+                                        <a class="dropdown-item text-dark" href="{{ route('user.update') }}">{{ __('Mes infos') }}</a>
+
+                                        <a class="dropdown-item text-dark" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Déconnexion') }}
-                                </a>
+                                            {{ __('Déconnexion') }}
+                                        </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
                             </div>
-                        </li>
 
-                        @endguest
+                            <div class="row">
+                                <li class="nav-item">
+                                    <form class="form-inline" action="{{ route('show-its.search') }}" method="post" role="search">
+                                        @csrf
+                                        <input class="form-control mr-sm-2" name="q" type="search" placeholder="Rechercher un Show It">
+                                        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Rechercher</button>
+                                    </form>
+                                </li>
+                            </div>
+
+                        </div>
+                        @endauth
 
                     </ul>
                 </div>

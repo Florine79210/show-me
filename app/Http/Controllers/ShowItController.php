@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ShowIt;
 use App\Models\Comment;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class ShowItController extends Controller
 {
@@ -29,24 +30,21 @@ class ShowItController extends Controller
         //
     }
 
-
-// *********** ZOOM SUR UN SHOW IT ********************************
-    public function show(ShowIt $showIt)
+    // *********** RECHERCHER UN SHOW IT ********************************
+    public function search(Request $request)
     {
-        $user = User::where('id', $showIt->user_id)->get();
-        $comments = Comment::where('user_id', $showIt->user_id)->get();
-
-        return view('show-its.show', [
-            'show_it' => $showIt, 
-            'comments' => $comments,
-            'user' => $user
+        $request->validate([
+            'q' => 'required',
         ]);
 
-        // $showIt = ShowIt::findOrFail($showIt);
+        $recherche = $request->input('q');
 
-        // return redirect()->route('zoomShowIt');
+        $showIts = ShowIt::where('tags', 'like', "%$recherche%")
+            ->orWhere('content', 'like', "%$recherche%")
+            ->get();
+
+        return view('show-its.search', ['showIts' => $showIts]);
     }
-
 
     // *********** POSTER UN SHOW IT ********************************
     public function store(Request $request)
@@ -67,10 +65,20 @@ class ShowItController extends Controller
         return redirect()->route('home');
     }
 
+    // *********** ZOOM SUR UN SHOW IT ********************************
+    public function show(ShowIt $showIt)
+    {
+        return view('show-its.show', [
+            'showIt' => $showIt
+        ]);
+    }
+
     // ***************** MODIFIER UN SHOW IT ******************************
     public function update(Request $request, ShowIt $showIt)
-    {
-        if ($showIt->user_id === auth()->user()->id) {
+    {;
+
+        if ($this->authorize('update', $showIt)) {
+
             $request->validate([
                 'content' => 'required|max:150',
                 'image' => 'max:11',
@@ -83,8 +91,7 @@ class ShowItController extends Controller
             $showIt->save();
 
             return redirect()->route('home')->with(['message', 'Le Show It a bien été modifié !']);
-
-        }else{
+        } else {
             return redirect()->route('home')->withErrors(['ERREUR d\'autorisation', 'Vous n\'avez pas l\'autorisation de faire ça !']);
         }
     }
@@ -92,12 +99,11 @@ class ShowItController extends Controller
     // ***************** SUPPRIMER UN SHOW IT ******************************
     public function destroy(ShowIt $showIt)
     {
-        if ($showIt->user_id === auth()->user()->id) {
+        if ($this->authorize('delete', $showIt)) {
 
             $showIt->delete();
 
             return redirect()->route('home')->with(['message', 'Le Show It a bien été supprimé !']);
-
         } else {
             return redirect()->route('home')->withErrors(['ERREUR d\'autorisation', 'Vous n\'avez pas l\'autorisation de faire ça !']);
         }
