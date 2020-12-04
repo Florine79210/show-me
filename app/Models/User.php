@@ -13,7 +13,7 @@ class User extends Authenticatable
 
     public function show_its(){
 
-        return $this->hasMany('App\Models\Show_it');
+        return $this->hasMany('App\Models\ShowIt');
     } 
 
     public function comments(){

@@ -56,7 +56,7 @@
 
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                                        <a class="dropdown-item text-dark" href="{{ route('user.profile') }}">{{ __('Mon profil') }}</a>
+                                        <a class="dropdown-item text-dark" href="{{ route('user.profile', auth()->user()) }}">{{ __('Mon profil') }}</a>
 
                                         <a class="dropdown-item text-dark" href="{{ route('user.update') }}">{{ __('Mes infos') }}</a>
 

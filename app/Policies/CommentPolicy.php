@@ -78,7 +78,10 @@ class CommentPolicy
      */
     public function delete(User $user, Comment $comment)
     {
-        if (($user->id === $comment->showIt->user_id || $user->id === $comment->user_id) || ($user->roles_id === 2)) {
+        $showIt = ShowIt::findOrFail($comment->show_it_id);
+        $showItUserId = $showIt->user_id;
+
+        if (($user->id === $showItUserId) || ($user->id === $comment->user_id) || ($user->roles_id === 2)) {
             
             return true;
         }

@@ -13,7 +13,7 @@
 
                 <div class="card-body text-center">
                     <div class="row justify-content-center">
-                        <p>{{ $showIt->image }}</p>
+                        <img src="{{ asset("images/$showIt->image") }}"></img>
                     </div>
 
                     <div class="row justify-content-center">
@@ -84,7 +84,7 @@
                         </div>
 
                         <!-- *********** MODAL MODIFIER MON SHOW IT *********************************************************************************************************** -->
-                        @if ($showIt->user_id === auth()->user()->id)
+                        @can('update', $showIt)
                         <div class="col-md-4">
                             <button type="button" class="btn btnsShowIt btnsModifShowIt mb-3" data-toggle="modal" data-target="#modalModifShowIt{{$showIt->id}}">
                                 Modifier mon Show It
@@ -140,8 +140,10 @@
                             </div>
 
                         </div>
+                        @endcan
 
                         <!-- *********** SUPPRIMER LE SHOW IT *********************************************************************************************************** -->
+                        @can('delete', $showIt)
                         <div class="col-md-4">
                             <form method="POST" action="{{ route('show-its.destroy', $showIt) }}">
                                 @csrf
@@ -151,7 +153,7 @@
                                 </button>
                             </form>
                         </div>
-                        @endif
+                        @endcan
 
                     </div>
 
@@ -169,7 +171,7 @@
 
                                 <div class="card-body text-center">
                                     <div class="row justify-content-center">
-                                        <p>{{ $comment->image }}</p>
+                                        <img src="{{ asset("images/$comment->image") }}"></img>
                                     </div>
 
                                     <div class="row justify-content-center">
@@ -185,7 +187,7 @@
                                     <div class="row justify-content-center">
 
                                         <!-- ************ MODAL MODIFIER MON COMMENTAIRE *********************************************************************************************************** -->
-                                        @if ($comment->user_id === auth()->user()->id)
+                                        @can('update', $comment)
                                         <div class="col-md-6">
                                             <button type="button" class="btn btnsShowIt btnsModifShowIt mb-3" data-toggle="modal" data-target="#modalModifCommentaire{{$comment->id}}">
                                                 Modifier mon Commentaire
@@ -241,10 +243,10 @@
                                             </div>
 
                                         </div>
-                                        @endif
+                                        @endcan
 
                                         <!-- *********** SUPPRIMER COMMENTAIRE *********************************************************************************************************** -->
-                                        @if ($showIt->user_id === auth()->user()->id || $comment->user_id === auth()->user()->id)
+                                        @can('delete', $comment)
                                         <div class="col-md-6">
                                             <form method="POST" action="{{ route('comments.destroy', $comment) }}">
                                                 @csrf
@@ -254,7 +256,7 @@
                                                 </button>
                                             </form>
                                         </div>
-                                        @endif
+                                        @endcan
 
                                     </div>
                                 </div>

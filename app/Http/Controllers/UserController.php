@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Symfony\Contracts\Service\Attribute\Required;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Models\ShowIt;
 
 class UserController extends Controller
 {
@@ -125,9 +126,12 @@ class UserController extends Controller
     }
 
     // **************** VOIR LA PAGE PROFIL DE L'UTILLISATEUR ****************
-    public function profile()
+    public function profile(User $user)
     {
-        $user = auth()->user();
+        $userId = auth()->user()->id;
+        $user = User::findOrFail($userId);
+        
+      
         return view('user.profile', ['user' => $user]);
     }
 

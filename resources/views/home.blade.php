@@ -43,7 +43,6 @@
 
 <!-- *********** AFFICHER LES SHOW IT *********************************************************************************************************** -->
 @foreach ($showIts as $showIt)
-
 <div class="container mb-3">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -53,7 +52,7 @@
 
                 <div class="card-body text-center">
                     <div class="row justify-content-center">
-                        <p>{{ $showIt->image }}</p>
+                        <img src="{{ asset("images/$showIt->image") }}"></img>
                     </div>
 
                     <div class="row justify-content-center">
@@ -209,6 +208,7 @@
 
                     <!-- *********** AFFICHER LES COMMENTAIRES DU SHOW IT *********************************************************************************************************** -->
                     @foreach ($showIt->comments as $comment)
+                   
                     <div class="row justify-content-center">
                         <div class="col-md-10">
 
@@ -217,7 +217,7 @@
 
                                 <div class="card-body text-center">
                                     <div class="row justify-content-center">
-                                        <p>{{ $comment->image }}</p>
+                                        <img src="{{ asset("images/$comment->image") }}"></img>
                                     </div>
 
                                     <div class="row justify-content-center">
