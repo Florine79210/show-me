@@ -36,8 +36,8 @@
                 </div>
 
                 <div class="row mt-5 justify-content-center">
-                        <a class="btn btnsConnexionInscription mr-5 ml-5" href="login">connexion</a>
-                        <a class="btn btnsConnexionInscription mr-5 ml-5" href="register">inscription</a>
+                        <a class="btn btnsConnexionInscription mr-5 ml-5" href="login">Connexion</a>
+                        <a class="btn btnsConnexionInscription mr-5 ml-5" href="register">Inscription</a>
                 </div>
             </div>
 

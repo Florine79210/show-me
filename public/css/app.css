@@ -10909,15 +10909,15 @@ a.text-dark:focus {
   border-radius: 20px;
 }
 
-.postShowIt .card-header {
+.postShowItHeader {
   background-color: #422f99;
-  border-top-right-radius: 15px;
-  border-top-left-radius: 15px;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
 }
 
-.postShowIt h1 {
+.postShowItHeader h1 {
   color: #ffffff;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: bold;
 }
 
@@ -10994,38 +10994,52 @@ a.text-dark:focus {
   border-radius: 20px;
 }
 
-.showShowIts .card-header {
+.showShowItsHeader {
   color: #ffffff;
+  font-weight: bold;
+  font-size: 17px;
   background-color: #422f99;
-  border-top-right-radius: 15px;
-  border-top-left-radius: 15px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
 }
 
 .showShowIts p {
   color: #422f99;
 }
 
-.showComments {
-  border-color: #422f99;
-}
-
-.showComments .card-header {
-  border-color: #422f99;
-  color: #422f99;
-  background-color: #ffffff;
-}
-
 .footerShowIts {
   background-color: #422f99;
 }
 
-h1 {
+.showComments {
+  border-color: #422f99;
+}
+
+.showCommentsHeader {
+  border-color: #422f99;
+  color: #422f99;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #ffffff;
+}
+
+.showCommentsFooter {
+  border-color: #422f99;
+}
+
+.voirInfos {
+  border: outset 2px;
+  border-color: #422f99;
+  border-radius: 20px;
+}
+
+.voirInfos h1 {
   color: #422f99;
   font-size: 40px;
   font-weight: bold;
 }
 
-p {
+.voirInfos p {
   font-size: 15px;
 }
 
@@ -11034,7 +11048,7 @@ p {
   font-weight: bold;
 }
 
-h2 {
+.voirInfos h2 {
   color: #422f99;
   font-size: 25px;
   font-weight: bold;
@@ -11072,6 +11086,43 @@ h2 {
   transform: scale(1.2);
   transition: 1.5s;
   color: #e3342f;
+}
+
+.bienvenue {
+  color: #422f99;
+  font-weight: bold;
+}
+
+.btnsConnexionInscription {
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #422f99;
+  border: outset 2px;
+  border-color: #ffffff;
+  border-radius: 15px;
+}
+
+.btnsConnexionInscription:hover {
+  transform: scale(1.2);
+  transition: 1.5s;
+  background-color: #ffffff;
+  color: #422f99;
+  border-color: #422f99;
+}
+
+.formulaireConnexionInscription {
+  border: outset 2px;
+  border-color: #422f99;
+  border-radius: 20px;
+}
+
+.enTeteConnexionInscription {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 25px;
+  background-color: #422f99;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
 }
 
 .navbar {

@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card mb-5 postShowIt">
-                <div class="card-header text-center">
+                <div class="card-header text-center postShowItHeader">
                     <h1>Exprime toi</h1>
                 </div>
 
@@ -48,7 +48,7 @@
         <div class="col-md-8">
             <div class="card showShowIts mb-3">
 
-                <div class="card-header text-center">Posté par {{ $showIt->user->pseudo }} le {{ $showIt->updated_at }}</div>
+                <div class="card-header text-center showShowItsHeader">Posté par {{ $showIt->user->pseudo }} le {{ $showIt->updated_at }}</div>
 
                 <div class="card-body text-center">
                     <div class="row justify-content-center">
@@ -213,7 +213,7 @@
                         <div class="col-md-10">
 
                             <div class="card showComments mb-3">
-                                <div class="card-header text-center">Posté par {{ $comment->user->pseudo }} le {{ $comment->updated_at }}</div>
+                                <div class="card-header text-center showCommentsHeader">Posté par {{ $comment->user->pseudo }} le {{ $comment->updated_at }}</div>
 
                                 <div class="card-body text-center">
                                     <div class="row justify-content-center">
@@ -229,7 +229,7 @@
                                     </div>
                                 </div>
 
-                                <div class="card-footer text-center">
+                                <div class="card-footer text-center showCommentsFooter">
                                     <div class="row justify-content-center">
 
                                         <!-- ************ MODAL MODIFIER MON COMMENTAIRE *********************************************************************************************************** -->

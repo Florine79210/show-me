@@ -7,6 +7,7 @@
         <title>Show-Me</title>
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
     </head>
 
@@ -31,8 +32,8 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-8">
-                        <div class="card">
-                            <div class="card-header text-center">{{ __('Connexion') }}</div>
+                        <div class="card formulaireConnexionInscription">
+                            <div class="card-header text-center enTeteConnexionInscription">{{ __('Connexion') }}</div>
 
                             <div class="card-body">
                                 <form method="POST" action="{{ route('login') }}">
@@ -88,7 +89,7 @@
 
                                     <div class="form-group row mb-0">
                                         <div class="col-md-8 offset-md-4">
-                                            <button type="submit" class="btn">
+                                            <button type="submit" class="btn btnsConnexionInscription">
                                                 {{ __('Connexion') }}
                                             </button>
 

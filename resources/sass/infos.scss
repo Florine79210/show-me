@@ -1,10 +1,16 @@
-h1 {
+.voirInfos {
+    border: outset 2px;
+    border-color: $bleuet;
+    border-radius: 20px;
+}
+
+.voirInfos h1 {
     color: $bleuet;
     font-size: 40px;
     font-weight: bold;
 }
 
-p {
+.voirInfos p {
     font-size: 15px;
 }
 
@@ -13,7 +19,7 @@ p {
     font-weight: bold;
 }
 
-h2 {
+.voirInfos h2 {
     color: $bleuet;
     font-size: 25px;
     font-weight: bold;

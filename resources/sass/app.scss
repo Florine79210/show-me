@@ -17,14 +17,46 @@
 
 // ----------------- PAGE INDEX ------------------------------------------------------------------
 
-// .bienvenue {
-//     color: $bleuet;
-//     font-weight: bold;
-// }
-// .btnsConnexionInscription {
-//     color: $blanc;
-//     background-color: $bleuet;
-// }
+.bienvenue {
+    color: $bleuet;
+    font-weight: bold;
+}
+
+// ----------------- BTNS PAGE INDEX / LOGIN / REGISTER ------------------------------------------------------------------
+
+.btnsConnexionInscription {
+    color: $blanc;
+    font-weight: bold;
+    background-color: $bleuet;
+    border: outset 2px;
+    border-color: $blanc;
+    border-radius: 15px;
+}
+
+.btnsConnexionInscription:hover {
+    transform: scale(1.2);
+    transition: 1.5s;
+    background-color: $blanc;
+    color: $bleuet;
+    border-color: $bleuet;
+}
+
+// ----------------- PAGE LOGIN / REGISTER ------------------------------------------------------------------
+
+.formulaireConnexionInscription {
+    border: outset 2px;
+    border-color: $bleuet;
+    border-radius: 20px;    
+}
+
+.enTeteConnexionInscription {
+    color: $blanc;
+    font-weight: bold;
+    font-size: 25px;
+    background-color: $bleuet;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
 
 // ----------------- NAVBAR ------------------------------------------------------------------
 

@@ -131,7 +131,6 @@ class UserController extends Controller
         $userId = auth()->user()->id;
         $user = User::findOrFail($userId);
         
-      
         return view('user.profile', ['user' => $user]);
     }
 
