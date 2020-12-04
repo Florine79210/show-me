@@ -14,7 +14,7 @@
 
                 <div class="card-body text-center">
                     <div class="row justify-content-center">
-                        <img src="{{ asset("images/$showIt->image") }}"></img>
+                        <img img class="w-50" src="{{ asset("images/$showIt->image") }}"></img>
                     </div>
 
                     <div class="row justify-content-center">

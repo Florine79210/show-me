@@ -13,7 +13,7 @@
 
                 <div class="card-body text-center">
                     <div class="row justify-content-center">
-                        <img src="{{ asset("images/$showIt->image") }}"></img>
+                        <img img class="w-50" src="{{ asset("images/$showIt->image") }}"></img>
                     </div>
 
                     <div class="row justify-content-center">
@@ -147,7 +147,6 @@
                         </div>
                         @endcan
 
-
                         <!-- *********** SUPPRIMER LE SHOW IT *********************************************************************************************************** -->
                         @can('delete', $showIt)
                         <div class="col-md-4">
@@ -160,9 +159,6 @@
                             </form>
                         </div>
                         @endcan
-
-
-
 
                     </div>
 
@@ -181,7 +177,7 @@
 
                                 <div class="card-body text-center">
                                     <div class="row justify-content-center">
-                                        <img src="{{ asset("images/$comment->image") }}"></img>
+                                        <img img class="w-25" src="{{ asset("images/$comment->image") }}"></img>
                                     </div>
 
                                     <div class="row justify-content-center">
