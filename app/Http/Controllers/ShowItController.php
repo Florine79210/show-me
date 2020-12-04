@@ -75,7 +75,7 @@ class ShowItController extends Controller
 
     // ***************** MODIFIER UN SHOW IT ******************************
     public function update(Request $request, ShowIt $showIt)
-    {;
+    {
 
         if ($this->authorize('update', $showIt)) {
 

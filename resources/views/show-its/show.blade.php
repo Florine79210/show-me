@@ -21,7 +21,7 @@
                     </div>
 
                     <div class="row justify-content-center">
-                        <p>{{ $showIt->tags }}</p>
+                        <p>#{{ $showIt->tags }}</p>
                     </div>
 
                     <div class="row justify-content-center">
@@ -179,7 +179,7 @@
                                     </div>
 
                                     <div class="row justify-content-center">
-                                        <p>{{ $comment->tags }}</p>
+                                        <p>#{{ $comment->tags }}</p>
                                     </div>
                                 </div>
 
