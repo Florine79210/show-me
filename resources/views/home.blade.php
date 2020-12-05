@@ -51,9 +51,12 @@
                 <div class="card-header text-center showShowItsHeader">Posté par {{ $showIt->user->pseudo }} le {{ $showIt->updated_at }}</div>
 
                 <div class="card-body text-center">
+
+                    @if (isset($showIt->image))
                     <div class="row justify-content-center">
                         <img img class="w-50" src="{{ asset("images/$showIt->image") }}"></img>
                     </div>
+                    @endif
 
                     <div class="row justify-content-center">
                         <p>{{ $showIt->content }}</p>
