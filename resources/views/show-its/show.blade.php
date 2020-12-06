@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <!-- *********** AFFICHER LE SHOW IT *********************************************************************************************************** -->
+<!-- *********** AFFICHER LE SHOW IT *********************************************************************************************************** -->
 
 <div class="container mb-3">
     <div class="row justify-content-center">
@@ -22,6 +22,12 @@
 
                     <div class="row justify-content-center">
                         <p>#{{ $showIt->tags }}</p>
+                    </div>
+
+                    <div class="row mt-2 mb-3 justify-content-center">
+                        <a class="btn btnsShowIt btnsZoomShowIt" href="{{ route('show-its.show', $showIt) }}">
+                            Zoom sur ce Show It
+                        </a>
                     </div>
 
                     <div class="row justify-content-center">
@@ -66,7 +72,7 @@
                                                         <input name="tags" type="text" class="form-control @error('content') is-invalid @enderror text-center" placeholder="Ajoute un ou des tag(s)" autofocus>
                                                     </div>
                                                 </div>
-                                        
+
                                                 <input class="form-control" type="hidden" id="show_it_id" name="show_it_id" value="{{$showIt->id}}">
                                             </div>
 
@@ -87,7 +93,7 @@
                         @can('update', $showIt)
                         <div class="col-md-4">
                             <button type="button" class="btn btnsShowIt btnsModifShowIt mb-3" data-toggle="modal" data-target="#modalModifShowIt{{$showIt->id}}">
-                                Modifier mon Show It
+                                Modifier le Show It
                             </button>
 
                             <div class="modal" id="modalModifShowIt{{$showIt->id}}" tabindex="-1">
@@ -99,7 +105,7 @@
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
 
-                                            <h2 class="modal-title text-center">Modifier mon Show It</h2>
+                                            <h2 class="modal-title text-center">Modifier le Show It</h2>
                                         </div>
 
                                         <form method="POST" action="{{ route('show-its.update', $showIt) }}">
@@ -161,111 +167,119 @@
 
                 <div class="card-footer footerShowIts text-center">
 
+                    <button class="btn btnsShowIt btnsShowComments" type="button" data-toggle="collapse" data-target="#collapseShowComments" aria-expanded="false" aria-controls="collapseShowComments">
+                        Afficher les Commentaires
+                    </button>
+
                     <!-- *********** AFFICHER LES COMMENTAIRES DU SHOW IT *********************************************************************************************************** -->
-                    @foreach ($showIt->comments as $comment)
-                    <div class="row justify-content-center">
-                        <div class="col-md-10">
+                    <div class="collapse" id="collapseShowComments">
 
-                            <div class="card showComments mb-3">
-                                <div class="card-header text-center showCommentsHeader">Posté par {{ $comment->user->pseudo }} le {{ $comment->updated_at }}</div>
+                        @foreach ($showIt->comments as $comment)
+                        <div class="row justify-content-center">
+                            <div class="col-md-10">
 
-                                <div class="card-body text-center">
-                                    <div class="row justify-content-center">
-                                        <img img class="w-50" src="{{ asset("images/$comment->image") }}"></img>
+                                <div class="card showComments mb-3">
+                                    <div class="card-header text-center showCommentsHeader">Posté par {{ $comment->user->pseudo }} le {{ $comment->updated_at }}</div>
+
+                                    <div class="card-body text-center">
+                                        <div class="row justify-content-center">
+                                            <img img class="w-50" src="{{ asset("images/$comment->image") }}"></img>
+                                        </div>
+
+                                        <div class="row justify-content-center">
+                                            <p>{{ $comment->content }}</p>
+                                        </div>
+
+                                        <div class="row justify-content-center">
+                                            <p>#{{ $comment->tags }}</p>
+                                        </div>
                                     </div>
 
-                                    <div class="row justify-content-center">
-                                        <p>{{ $comment->content }}</p>
-                                    </div>
+                                    <div class="card-footer text-center showCommentsFooter">
+                                        <div class="row justify-content-center">
 
-                                    <div class="row justify-content-center">
-                                        <p>#{{ $comment->tags }}</p>
-                                    </div>
-                                </div>
+                                            <!-- ************ MODAL MODIFIER MON COMMENTAIRE *********************************************************************************************************** -->
+                                            @can('update', $comment)
+                                            <div class="col-md-6">
+                                                <button type="button" class="btn btnsShowIt btnsModifShowIt mb-3" data-toggle="modal" data-target="#modalModifCommentaire{{$comment->id}}">
+                                                    Modifier le Commentaire
+                                                </button>
 
-                                <div class="card-footer text-center showCommentsFooter">
-                                    <div class="row justify-content-center">
+                                                <div class="modal" id="modalModifCommentaire{{$comment->id}}" tabindex="-1">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
 
-                                        <!-- ************ MODAL MODIFIER MON COMMENTAIRE *********************************************************************************************************** -->
-                                        @can('update', $comment)
-                                        <div class="col-md-6">
-                                            <button type="button" class="btn btnsShowIt btnsModifShowIt mb-3" data-toggle="modal" data-target="#modalModifCommentaire{{$comment->id}}">
-                                                Modifier mon Commentaire
-                                            </button>
-
-                                            <div class="modal" id="modalModifCommentaire{{$comment->id}}" tabindex="-1">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-
-                                                        <div class="mt-3 modal-header-center">
-                                                            <button type="button" class="close mr-3" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-
-                                                            <h2 class="modal-title text-center">Modifier mon commentaire</h2>
-                                                        </div>
-
-                                                        <form method="POST" action="{{ route('comments.update', $comment) }}">
-                                                            @csrf
-                                                            @method('put')
-
-                                                            <div class="modal-body text-center">
-
-                                                                <div class="form-group row">
-                                                                    <div class="col-md-6">
-                                                                        <input name="image" type="text" class="form-control @error('image') is-invalid @enderror text-center" value="{{ $comment->image }}" autocomplete="image" autofocus>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="form-group row">
-                                                                    <div class="col-md-6">
-                                                                        <input name="content" type="text" class="form-control @error('content') is-invalid @enderror text-center" value="{{ $comment->content }}" autocomplete="content" autofocus>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="form-group row">
-                                                                    <div class="col-md-6">
-                                                                        <input name="tags" type="text" class="form-control @error('content') is-invalid @enderror text-center" value="{{ $comment->tags }}" autocomplete="tags" autofocus>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="modal-footer d-flex justify-content-center">
-                                                                <button type="submit" class="btn btnsShowIt btnsModifShowIt">
-                                                                    {{ __('Modifier') }}
+                                                            <div class="mt-3 modal-header-center">
+                                                                <button type="button" class="close mr-3" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
                                                                 </button>
+
+                                                                <h2 class="modal-title text-center">Modifier le commentaire</h2>
                                                             </div>
 
-                                                        </form>
+                                                            <form method="POST" action="{{ route('comments.update', $comment) }}">
+                                                                @csrf
+                                                                @method('put')
 
+                                                                <div class="modal-body text-center">
+
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-6">
+                                                                            <input name="image" type="text" class="form-control @error('image') is-invalid @enderror text-center" value="{{ $comment->image }}" autocomplete="image" autofocus>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-6">
+                                                                            <input name="content" type="text" class="form-control @error('content') is-invalid @enderror text-center" value="{{ $comment->content }}" autocomplete="content" autofocus>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-6">
+                                                                            <input name="tags" type="text" class="form-control @error('content') is-invalid @enderror text-center" value="{{ $comment->tags }}" autocomplete="tags" autofocus>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="modal-footer d-flex justify-content-center">
+                                                                    <button type="submit" class="btn btnsShowIt btnsModifShowIt">
+                                                                        {{ __('Modifier') }}
+                                                                    </button>
+                                                                </div>
+
+                                                            </form>
+
+                                                        </div>
                                                     </div>
                                                 </div>
+
                                             </div>
+                                            @endcan
+
+                                            <!-- *********** SUPPRIMER COMMENTAIRE *********************************************************************************************************** -->
+                                            @can('delete', $comment)
+                                            <div class="col-md-6">
+                                                <form method="POST" action="{{ route('comments.destroy', $comment) }}">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="btn btnsShowIt btnsSupprShowIt">
+                                                        {{ __('Supprimer') }}
+                                                    </button>
+                                                </form>
+                                            </div>
+                                            @endcan
 
                                         </div>
-                                        @endcan
-
-                                        <!-- *********** SUPPRIMER COMMENTAIRE *********************************************************************************************************** -->
-                                        @can('delete', $comment)
-                                        <div class="col-md-6">
-                                            <form method="POST" action="{{ route('comments.destroy', $comment) }}">
-                                                @csrf
-                                                @method('delete')
-                                                <button type="submit" class="btn btnsShowIt btnsSupprShowIt">
-                                                    {{ __('Supprimer') }}
-                                                </button>
-                                            </form>
-                                        </div>
-                                        @endcan
-
                                     </div>
+
                                 </div>
 
                             </div>
-
                         </div>
+                        @endforeach
+
                     </div>
-                    @endforeach
 
                 </div>
 
@@ -275,4 +289,3 @@
 </div>
 
 @endsection
-

@@ -21,12 +21,14 @@
                         <p>{{ $showIt->content }}</p>
                     </div>
 
-                     <div class="row justify-content-center">
+                    <div class="row justify-content-center">
                         <p>#{{ $showIt->tags }}</p>
                     </div>
 
                     <div class="row mt-2 mb-3 justify-content-center">
-                        <a href="{{ route('show-its.show', $showIt) }}">Zoom sur ce Show It</a>
+                        <a class="btn btnsShowIt btnsZoomShowIt" href="{{ route('show-its.show', $showIt) }}">
+                            Zoom sur ce Show It
+                        </a>
                     </div>
 
                 </div>

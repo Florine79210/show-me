@@ -1,15 +1,14 @@
 // *************************** POSTER UN SHOW IT *******************************************
-
 .postShowIt {
     border: outset 2px;
     border-color: $bleuet;
     border-radius: 20px;
 }
 
-.postShowItHeader {
+.card .postShowItHeader {
     background-color: $bleuet;
-    border-top-right-radius: 25px;
-    border-top-left-radius: 25px;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
 }
 
 .postShowItHeader h1 {
@@ -19,7 +18,6 @@
 }
 
 // *************************** BOUTONS *******************************************
-
 .btnsShowIt {
     font-size: 15px;
     font-weight: bold;
@@ -29,6 +27,20 @@
 .btnsShowIt:hover {
     transform: scale(1.2);
     transition: 1.5s;
+}
+
+.btnsZoomShowIt {
+    width: 250px;
+    background-color: $blue;
+    color: $blanc;
+    border-color: $blanc;
+    border-radius: 15px;
+}
+
+.btnsZoomShowIt:hover {
+    background-color: $blanc;
+    color: $blue;
+    border-color: $blue;
 }
 
 .btnPostShowIt {
@@ -87,45 +99,60 @@
     border-color: $red;
 }
 
+.btnsShowComments {
+    width: 250px;
+    background-color: $blue;
+    color: $blanc;
+    border-color: $bleuet;
+    border-radius: 15px;
+}
+
+.btnsShowComments:hover {
+    background-color: $blanc;
+    color: $blue;
+    border-color: $blue;
+}
 
 // *************************** AFFICHAGE DES SHOW IT *******************************************
-
 .showShowIts {
     border: outset 2px;
     border-color: $bleuet;
     border-radius: 20px;
 }
 
-.showShowItsHeader {
+.card .showShowItsHeader {
     color: $blanc;
     font-weight: bold;
     font-size: 17px;
     background-color: $bleuet;
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
 }
 
 .showShowIts p {
     color: $bleuet;
 }
 
-.footerShowIts {
+.card .footerShowIts {
     background-color: $bleuet;
-    // border-bottom-right-radius: 30px;
-    // border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
 }
 
 // *************************** AFFICHER LES COMMENTAIRES *******************************************
 .showComments {
     border-color: $bleuet;
+    border-radius: 20px;
 }
 
-.showCommentsHeader {
+.card .showCommentsHeader {
     border-color: $bleuet;
     color: $bleuet;
     font-size: 15px;
     font-weight: bold;
     background-color: $blanc;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
 }
 
 .showCommentsFooter {

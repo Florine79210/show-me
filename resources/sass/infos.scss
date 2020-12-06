@@ -4,10 +4,13 @@
     border-radius: 20px;
 }
 
-.voirInfos h1 {
-    color: $bleuet;
+.voirInfos .card-header {
+    color: $blanc;
     font-size: 40px;
     font-weight: bold;
+    background-color: $bleuet;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
 }
 
 .voirInfos p {
@@ -28,6 +31,11 @@
 .precisions {
     font-size: 20px;
     font-weight: bold;
+}
+
+.voirInfos .card-footer {
+    border-top: outset 2px;
+    border-top-color: $bleuet;
 }
 
 .btnsModif {
