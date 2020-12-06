@@ -11180,3 +11180,14 @@ a.text-dark:focus {
   font-size: 40px;
 }
 
+footer {
+  height: 80px;
+  background-color: #422f99;
+  color: #ffffff;
+  font-size: 15px;
+}
+
+footer span {
+  font-weight: bold;
+}
+

@@ -18,10 +18,7 @@
 
 @import 'infos.scss';
 
-
-
 // ----------------- NAVBAR ------------------------------------------------------------------
-
 .navbar {
     background-color: $bleuet;
 }
@@ -36,6 +33,15 @@
     font-size: 40px;
 }
 
-// .navbar a .dropdown-item {
-//     color: $bleuet;
-// }
+// ----------------- FOOTER ------------------------------------------------------------------
+
+footer {
+    height: 80px;
+    background-color: $bleuet;
+    color: $blanc;
+    font-size: 15px;
+}
+
+footer span {
+    font-weight: bold;
+}

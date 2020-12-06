@@ -291,4 +291,6 @@
 
 @endforeach
 
+@include('footer')
+
 @endsection

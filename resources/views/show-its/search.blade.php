@@ -39,5 +39,6 @@
 </div>
 @endforeach
 
+@include('footer')
 
 @endsection
