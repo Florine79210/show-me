@@ -37,7 +37,6 @@ Route::put('user/updatePassword', [App\Http\Controllers\UserController::class, '
 //----------- Show IT-------------------------------------------------------------------------------
 Route::resource('/show-its', App\Http\Controllers\ShowItController::class);
 
-
 //----------- Commentaires -------------------------------------------------------------------------------
 Route::resource('/comments', App\Http\Controllers\CommentController::class);
 

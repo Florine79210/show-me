@@ -17,6 +17,9 @@
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
+    <!-- img hamburger navbar -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css">
+
     <!-- Scripts -->
     <script src="/js/app.js"></script>
 
@@ -29,14 +32,13 @@
 
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     <div class="row">
-                        <img class="w-25" src="{{ asset("images/logoBlanc_show-me.png") }}" alt="main avec doigt pointé">
-                        <p class="ml-5 nomDuSite">Show Me<p>
+                        <img class="logo" src="{{ asset("images/logoBlanc_show-me.png") }}" alt="main avec doigt pointé">
+                        <p class="nomDuSite">Show Me<p>
                     </div>
                 </a>
 
-
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler" id="hamburger" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -47,7 +49,7 @@
                         @auth
                         <div class="col-md-12">
 
-                            <div class="row justify-content-end">
+                            <div class="row justify-content-center">
                                 <li class="nav-item dropdown">
 
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -72,11 +74,11 @@
                                 </li>
                             </div>
 
-                            <div class="row">
+                            <div class="row justify-content-center">
                                 <li class="nav-item">
                                     <form class="form-inline" action="{{ route('show-its.search') }}" method="post" role="search">
                                         @csrf
-                                        <input class="form-control mr-sm-2" name="q" type="search" placeholder="Rechercher un Show It">
+                                        <input class="form-control w-50 pr-1 pl-1 mr-2 text-center" name="q" type="search" placeholder="Rechercher un Show It">
                                         <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Rechercher</button>
                                     </form>
                                 </li>

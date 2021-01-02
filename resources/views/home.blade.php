@@ -52,19 +52,21 @@
 
                 <div class="card-body text-center">
 
-                    <!-- @if (isset($showIt->image)) -->
+                    @if (isset($showIt->image))
                     <div class="row justify-content-center">
                         <img img class="w-50" src="{{ asset("images/$showIt->image") }}"></img>
                     </div>
-                    <!-- @endif -->
+                    @endif
 
                     <div class="row justify-content-center">
                         <p>{{ $showIt->content }}</p>
                     </div>
 
+                    @if (isset($showIt->tags))
                     <div class="row justify-content-center">
-                        <p>#{{$showIt->tags }}</p>
+                        <p>#{{ $showIt->tags }}</p>
                     </div>
+                    @endif
 
                     <div class="row mt-2 mb-3 justify-content-center">
                         <a class="btn btnsShowIt btnsZoomShowIt" href="{{ route('show-its.show', $showIt) }}">
@@ -225,17 +227,23 @@
                                     <div class="card-header text-center showCommentsHeader">Posté par {{ $comment->user->pseudo }} le {{ $comment->updated_at }}</div>
 
                                     <div class="card-body text-center">
+
+                                        @if (isset($comment->image))
                                         <div class="row justify-content-center">
                                             <img class="w-25" src="{{ asset("images/$comment->image") }}"></img>
                                         </div>
+                                        @endif
 
                                         <div class="row justify-content-center">
                                             <p>{{ $comment->content }}</p>
                                         </div>
 
+                                        @if (isset($comment->tags))
                                         <div class="row justify-content-center">
                                             <p>#{{ $comment->tags }}</p>
                                         </div>
+                                        @endif
+
                                     </div>
 
                                     <div class="card-footer text-center showCommentsFooter">

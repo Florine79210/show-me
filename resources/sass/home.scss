@@ -158,3 +158,13 @@
 .showCommentsFooter {
     border-color: $bleuet;
 }
+
+  /* ======================================================================
+                MEDIA QUERIES
+====================================================================== */
+
+@media screen and (max-width: 575px) {
+    .btnsShowComments {
+        width: 200px;
+    }
+}

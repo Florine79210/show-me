@@ -11097,6 +11097,16 @@ a.text-dark:focus {
   border-color: #422f99;
 }
 
+/* ======================================================================
+                MEDIA QUERIES
+====================================================================== */
+
+@media screen and (max-width: 575px) {
+  .btnsShowComments {
+    width: 200px;
+  }
+}
+
 .voirInfos {
   border: outset 2px;
   border-color: #422f99;
@@ -11175,9 +11185,75 @@ a.text-dark:focus {
   color: #ffffff;
 }
 
+nav .logo {
+  width: 15vw;
+}
+
 .navbar a .nomDuSite {
   font-weight: bold;
   font-size: 40px;
+  margin-left: 30px;
+}
+
+.nav-item .form-control {
+  font-size: 12px;
+  margin-left: 30px;
+}
+
+#hamburger {
+  background-color: #422f99;
+  border: outset #ffffff 3px;
+  margin-right: 20px;
+}
+
+#hamburger:hover {
+  transform: scale(1.2);
+  transition: 1.5s;
+}
+
+nav i {
+  color: #ffffff;
+  font-size: 25px;
+  margin-top: 3px;
+}
+
+/* ======================================================================
+                MEDIA QUERIES
+====================================================================== */
+
+@media screen and (min-width: 768px) {
+  #navbarDropdown {
+    margin-left: 150px;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  nav .logo {
+    width: 20vw;
+    margin-left: 5px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .nav-item .form-control {
+    margin-left: 3px;
+  }
+
+  nav .logo {
+    width: 30vw;
+    margin-right: 5px;
+    margin-left: 3px;
+  }
+
+  .navbar a .nomDuSite {
+    font-size: 30px;
+    margin-top: 10px;
+    margin-left: 0px;
+  }
+
+  #hamburger {
+    margin-right: 5px;
+  }
 }
 
 footer {
