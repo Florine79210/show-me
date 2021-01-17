@@ -10925,6 +10925,16 @@ a.text-dark:focus {
   border-color: #422f99;
 }
 
+/* ======================================================================
+                MEDIA QUERIES
+====================================================================== */
+
+@media screen and (max-width: 575px) {
+  .bienvenue {
+    font-size: 20px;
+  }
+}
+
 .formulaireConnexionInscription {
   border: outset 2px;
   border-color: #422f99;

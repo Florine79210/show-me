@@ -19,23 +19,27 @@
 
         <header>
 
-            <div class="container pt-5">
-                <div class="row mt-5 mb-3 pt-5 justify-content-center">
+            <div class="container p-3">
+                <div class="row mt-2 mb-5 pt-5 justify-content-center">
                     <img class="w-25" src="images/logoBleuet_show-me.png" alt="main avec doigt pointé">
                 </div>
 
-                <div class="row mt-5 mb-5 justify-content-center">
+                <div class="row mt-5 mb-2 justify-content-center">
                     <h1 class="bienvenue">Bienvenue sur Show Me !</h1>
+                </div>
+
+                <div class="row mt-2 mb-5 justify-content-center">
+                    <p>Le réseau social simplicime, adapté à tous.</p>
                 </div>
 
         </header>
 
         <main>
-                <div class="row mt-5 mb-5 pt-5 justify-content-center">
+                <div class="row mt-5 mb-2 p-3 justify-content-center">
                     <p>Pour continuer connéctez vous ou inscrivez vous.
                 </div>
 
-                <div class="row mt-5 justify-content-center">
+                <div class="row mt-3 justify-content-center">
                         <a class="btn btnsConnexionInscription mr-5 ml-5" href="login">Connexion</a>
                         <a class="btn btnsConnexionInscription mr-5 ml-5" href="register">Inscription</a>
                 </div>
