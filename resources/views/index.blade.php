@@ -20,7 +20,7 @@
         <header>
 
             <div class="container p-3">
-                <div class="row mt-2 mb-5 pt-5 justify-content-center">
+                <div class="row mt-5 mb-5 pt-5 justify-content-center">
                     <img class="w-25" src="images/logoBleuet_show-me.png" alt="main avec doigt pointé">
                 </div>
 
